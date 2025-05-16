@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="150" height="50" viewBox="0 0 150 50" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .text {
+      font-family: 'Segoe UI', sans-serif;
+      font-weight: bold;
+    }
+    .main-text {
+      font-size: 24px;
+      fill: white;
+    }
+    .sub-text {
+      font-size: 12px;
+      fill: #78f1e8;
+      letter-spacing: 1px;
+    }
+    .outline {
+      fill: none;
+      stroke: white;
+      stroke-width: 1.5;
+      stroke-dasharray: 5,3;
+      rx: 15;
+      ry: 15;
+    }
+  </style>
+  <rect class="outline" x="5" y="5" width="140" height="40" />
+  <text x="22" y="28" class="text main-text">Wizzy</text>
+  <text x="22" y="40" class="text sub-text">PORTFOLIO</text>
+</svg>

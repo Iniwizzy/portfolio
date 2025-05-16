@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ahmad Badawi</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+    /* Mobile Responsiveness Fixes Inline */
+    @media screen and (max-width: 768px) {
+        header {
+            padding: 15px;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+        
+        .content {
+            flex-direction: column;
+        }
+        
+        .sidebar {
+            width: 100%;
+            padding: 10px 0;
+            background-color: #2a1b4a;
+            border-radius: 0 0 15px 15px;
+        }
+        
+        .sidebar ul {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 0 10px;
+        }
+        
+        .sidebar li {
+            margin: 5px;
+            width: auto;
+        }
+        
+        .sidebar a {
+            padding: 8px 15px;
+            font-size: 16px;
+            border-radius: 20px;
+            text-align: center;
+            background-color: rgba(255,255,255,0.1);
+        }
+        
+        .sidebar li.active::before {
+            display: none;
+        }
+        
+        .sidebar li.active a {
+            background-color: #f9d61b;
+            color: #331f5e;
+        }
+        
+        .hero-section {
+            padding: 20px;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .hero-text {
+            margin-left: 0;
+            margin-top: 20px;
+        }
+    }
+        
+    @media screen and (max-width: 480px) {
+        .mobile-menu-toggle {
+            display: block;
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            z-index: 1000;
+            width: 40px;
+            height: 40px;
+            background-color: #f9d61b;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        
+        .mobile-menu-toggle span,
+        .mobile-menu-toggle span::before,
+        .mobile-menu-toggle span::after {
+            display: block;
+            position: absolute;
+            width: 20px;
+            height: 3px;
+            background-color: #331f5e;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+        
+        .mobile-menu-toggle span::before {
+            content: '';
+            top: -6px;
+        }
+        
+        .mobile-menu-toggle span::after {
+            content: '';
+            top: 6px;
+        }
+        
+        .sidebar {
+            transition: transform 0.3s ease;
+            transform: translateY(-100%);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 999;
+        }
+        
+        .sidebar.active {
+            transform: translateY(0);
+        }
+    }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="landing-page">
+            <header>
+                <div class="logo">
+                    <img src="images/logo1.svg" alt="Wizzy Logo">
+                </div>
+                <!-- Mobile menu toggle will be inserted here by JavaScript -->
+            </header>
+            
+            <div class="content">
+                <nav class="sidebar">
+                    <ul>
+                        <li class="active" data-page="home"><a href="#home">Home</a></li>
+                        <li data-page="project"><a href="#project">Project</a></li>
+                        <li data-page="activity"><a href="#activity">Activity</a></li>
+                        <li data-page="info"><a href="#info">Info</a></li>
+                        <li data-page="contact"><a href="#contact">Contact</a></li>
+                        <li data-page="about"><a href="#about">About</a></li>
+                    </ul>
+                </nav>
+                
+                <main>
+                    <!-- HOME PAGE -->
+                    <div class="page-content active" id="home">
+                        <div class="hero-section">
+                            <div class="emoji-decoration">
+                                <img src="images/emoji.svg" alt="Emoji">
+                            </div>
+                            <div class="artist-image">
+                                <img src="images/foto.jpg" alt="Wizzy">
+                            </div>
+                            
+                            <div class="hero-text">
+                                <h1>Ahmad Badawi</h1>
+                                <h2 class="typewriter">Web Developer & App Enthusiast</h2>
+                                <p>Building impactful web and app solutions with a blend of creativity and functionality. Let's turn your ideas into powerful digital experiences.</p>
+                                <div class="buttons">
+                                    <a href="#project" class="cta-button">View My Work</a>
+                                    <a href="#contact" class="cta-button alternate">Hire Me</a>
+                                </div>
+                            </div>
+                            
+                            <div class="decorations">
+                                <img src="images/star1.svg" class="star-1" alt="Star">
+                                <img src="images/star2.svg" class="star-2" alt="Star">
+                                <img src="images/star2.svg" class="star-3" alt="Star">
+                                <img src="images/star1.svg" class="star-4" alt="Star">
+                                <img src="images/star2.svg" class="star-5" alt="Star">
+                                <img src="images/star2.svg" class="star-6" alt="Star">
+                                <!-- <img src="images/geometry.svg" class="geometry" alt="Geometric Shape"> -->
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- GALLERY PAGE -->
+                    <div class="page-content" id="project">
+                        <div class="section-title">
+                            <h2>My Creative Portfolio</h2>
+                            <p>Showcasing my best digital work and creative projects</p>
+                        </div>
+                        
+                        <div class="gallery-filter">
+                            <button class="filter-btn active" data-filter="all">All</button>
+                            <button class="filter-btn" data-filter="web">Web</button>
+                            <button class="filter-btn" data-filter="mobile">Mobile</button>
+                            <button class="filter-btn" data-filter="illustration">Illustration</button>
+                        </div>
+                        
+                        <div class="gallery-grid">
+                            <div class="gallery-item" data-category="web">
+                                <div class="item-inner">
+                                    <img src="images/project-2.png" alt="TuNetic Website">
+                                    <div class="item-overlay">
+                                        <h3>TuNetic Website</h3>
+                                        <p>UI/UX Design & Development</p>
+                                        <a href="#" class="view-project" data-project="ecommerce">View Project</a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="gallery-item" data-category="mobile">
+                                <div class="item-inner">
+                                    <img src="images/project-1.png" alt="Arena Connect Owner">
+                                    <div class="item-overlay">
+                                        <h3>Arena Connect Owner</h3>
+                                        <p>UI Design & Prototype</p>
+                                        <a href="https://www.figma.com/proto/aLD8QsN2YC0RJHIKrGBMWC/UI-UX-KEL-2?node-id=1-1059&t=1EHVJUbr2g1rfw22-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=379%3A597&show-proto-sidebar=1" class="view-project" data-project="fitness-app">View Project</a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="gallery-item" data-category="illustration">
+                                <div class="item-inner">
+                                    <img src="images/artist.jpg" alt="Character Design">
+                                    <div class="item-overlay">
+                                        <h3>Character Design</h3>
+                                        <p>Digital Illustration</p>
+                                        <a href="#" class="view-project" data-project="character">View Project</a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="gallery-item" data-category="web">
+                                <div class="item-inner">
+                                    <img src="images/artist.jpg" alt="Portfolio Website">
+                                    <div class="item-overlay">
+                                        <h3>Portfolio Website</h3>
+                                        <p>Frontend Development</p>
+                                        <a href="#" class="view-project" data-project="portfolio">View Project</a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="gallery-item" data-category="mobile">
+                                <div class="item-inner">
+                                    <img src="images/artist.jpg" alt="Travel App">
+                                    <div class="item-overlay">
+                                        <h3>Travel App</h3>
+                                        <p>Mobile UI/UX Design</p>
+                                        <a href="#" class="view-project" data-project="travel-app">View Project</a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="gallery-item" data-category="illustration">
+                                <div class="item-inner">
+                                    <img src="images/artist.jpg" alt="Icon Set">
+                                    <div class="item-overlay">
+                                        <h3>Custom Icon Set</h3>
+                                        <p>Vector Illustration</p>
+                                        <a href="#" class="view-project" data-project="icons">View Project</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Project Modal -->
+                        <div class="project-modal" id="project-modal">
+                            <div class="modal-content">
+                                <span class="close-modal"></span>
+                                <div class="modal-body">
+                                    <!-- Content will be loaded dynamically -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- SCHOOL PAGE -->
+                    <div class="page-content" id="activity">
+                        <div class="section-title">
+                            <h2>Education & Training</h2>
+                            <p>My academic journey and professional development</p>
+                        </div>
+                        
+                        <div class="education-timeline">
+                            <div class="timeline-item">
+                                <div class="timeline-icon">🔸</div>
+                                <div class="timeline-content">
+                                    <h3>Politeknik Negeri Semarang - Teknik Informatika</h3>
+                                    <span class="timeline-date">2023 - Present</span>
+                                    <p>Diploma 3 degree with focus on Web Technologies and Mobile Applications</p>
+                                    <div class="timeline-badge">GPA: 3.85/4.0</div>
+                                </div>
+                            </div>
+                            
+                            <div class="timeline-item">
+                                <div class="timeline-icon">🔸</div>
+                                <div class="timeline-content">
+                                    <h3>TSA - Certificate Ethical Hacker</h3>
+                                    <span class="timeline-date">2024</span>
+                                    <p>Professional certification in Ethical Hacker</p>
+                                    <a href="files/2024-Certificate Ethical Hacker.pdf" class="certificate-link" data-certificate="frontend">View Certificate <i class="fas fa-external-link-alt"></i></a>
+                                </div>
+                            </div>
+                            
+                            <div class="timeline-item">
+                                <div class="timeline-icon">🔸</div>
+                                <div class="timeline-content">
+                                    <h3>Database Programming with SQL by Oracle Academy</h3>
+                                    <span class="timeline-date">2024</span>
+                                    <p>Intensive 3-month program focused on Database Programming</p>
+                                    <a href="files/2024-Sertif Database Programming.pdf" class="certificate-link" data-certificate="frontend">View Certificate <i class="fas fa-external-link-alt"></i></a>
+                                </div>
+                            </div>
+                            
+                            <div class="timeline-item">
+                                <div class="timeline-icon">🔸</div>
+                                <div class="timeline-content">
+                                    <h3>Database Design by Oracle Academy</h3>
+                                    <span class="timeline-date">2024</span>
+                                    <p>Intensive 3-month program focused on Database Design</p>
+                                    <a href="files/2024-Sertif Database Design.pdf" class="certificate-link" data-certificate="frontend">View Certificate <i class="fas fa-external-link-alt"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Certificate Modal -->
+                        <div class="certificate-modal" id="certificate-modal">
+                            <div class="modal-content">
+                                <span class="close-certificate"></span>
+                                <div class="certificate-body">
+                                    <!-- Certificate content will be loaded here -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- INFO PAGE -->
+                    <div class="page-content" id="info">
+                        <div class="section-title">
+                            <h2>Skills & Expertise</h2>
+                            <p>Technical abilities and professional competencies</p>
+                        </div>
+                        
+                        <div class="skills-container">
+                            <div class="skills-column">
+                                <h3>Hard Skills</h3>
+                                
+                                <div class="skill-item">
+                                    <div class="skill-info">
+                                        <span>HTML5/CSS3</span>
+                                        <span>80%</span>
+                                    </div>
+                                    <div class="skill-bar">
+                                        <div class="skill-level" style="width: 80%"></div>
+                                    </div>
+                                </div>
+                                
+                                <div class="skill-item">
+                                    <div class="skill-info">
+                                        <span>JavaScript</span>
+                                        <span>80%</span>
+                                    </div>
+                                    <div class="skill-bar">
+                                        <div class="skill-level" style="width: 80%"></div>
+                                    </div>
+                                </div>
+                                
+                                <div class="skill-item">
+                                    <div class="skill-info">
+                                        <span>PHP/Laravel</span>
+                                        <span>80%</span>
+                                    </div>
+                                    <div class="skill-bar">
+                                        <div class="skill-level" style="width: 80%"></div>
+                                    </div>
+                                </div>
+                                
+                                <div class="skill-item">
+                                    <div class="skill-info">
+                                        <span>UI/UX Design</span>
+                                        <span>70%</span>
+                                    </div>
+                                    <div class="skill-bar">
+                                        <div class="skill-level" style="width: 70%"></div>
+                                    </div>
+                                </div>
+                                
+                                <div class="skill-item">
+                                    <div class="skill-info">
+                                        <span>Responsive Design</span>
+                                        <span>85%</span>
+                                    </div>
+                                    <div class="skill-bar">
+                                        <div class="skill-level" style="width: 85%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="skills-column">
+                                <h3>Soft Skills</h3>
+                                
+                                <div class="soft-skills">
+                                    <div class="soft-skill-tag">Teamwork</div>
+                                    <div class="soft-skill-tag">Communication</div>
+                                    <div class="soft-skill-tag">Problem Solving</div>
+                                    <div class="soft-skill-tag">Time Management</div>
+                                    <div class="soft-skill-tag">Adaptability</div>
+                                    <div class="soft-skill-tag">Creativity</div>
+                                    <div class="soft-skill-tag">Critical Thinking</div>
+                                    <div class="soft-skill-tag">Attention to Detail</div>
+                                </div>
+                                
+                                <h3>Tools I Use</h3>
+                                
+                                <div class="tools-grid">
+                                    <div class="tool-item">
+                                        <img src="images/figma.png" alt="Figma">
+                                        <span>Figma</span>
+                                    </div>
+                                    <div class="tool-item">
+                                        <img src="images/vscode.png" alt="VS Code">
+                                        <span>VS Code</span>
+                                    </div>
+                                    <div class="tool-item">
+                                        <img src="images/ps.png" alt="Photoshop">
+                                        <span>Photoshop</span>
+                                    </div>
+                                    <div class="tool-item">
+                                        <img src="images/git.png" alt="Git">
+                                        <span>Git</span>
+                                    </div>
+                                    <div class="tool-item">
+                                        <img src="images/npm.png" alt="NPM">
+                                        <span>NPM</span>
+                                    </div>
+                                    <div class="tool-item">
+                                        <img src="images/chatgpt.png" alt="Illustrator">
+                                        <span>Illustrator</span>
+                                    </div>
+                                </div>
+                                
+                                <h3>Languages</h3>
+                                <div class="languages">
+                                    <div class="language-item">
+                                        <span>English</span>
+                                        <div class="language-level">
+                                            <span class="circle filled"></span>
+                                            <span class="circle filled"></span>
+                                            <span class="circle filled"></span>
+                                            <span class="circle filled"></span>
+                                            <span class="circle"></span>
+                                        </div>
+                                    </div>
+                                    <div class="language-item">
+                                        <span>Bahasa Indonesia</span>
+                                        <div class="language-level">
+                                            <span class="circle filled"></span>
+                                            <span class="circle filled"></span>
+                                            <span class="circle filled"></span>
+                                            <span class="circle filled"></span>
+                                            <span class="circle filled"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- CONTACT PAGE -->
+                    <div class="page-content" id="contact">
+                        <div class="section-title">
+                            <h2>Get In Touch</h2>
+                            <p>Let's discuss your project or potential collaboration</p>
+                        </div>
+                        
+                        <div class="contact-container">
+                            <div class="contact-form">
+                                <form action="https://formspree.io/f/mgvkdajq" method="POST" id="contact-form">
+                                    <div class="form-group">
+                                        <label for="name">Your Name</label>
+                                        <input type="text" id="name" name="name" placeholder="Enter your name">
+                                        <span class="error-message" id="name-error"></span>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="email">Email Address</label>
+                                        <input type="email" id="email" name="email" placeholder="Enter your email">
+                                        <span class="error-message" id="email-error"></span>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="subject">Subject</label>
+                                        <input type="text" id="subject" name="subject" placeholder="What is this about?">
+                                        <span class="error-message" id="subject-error"></span>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="message">Message</label>
+                                        <textarea id="message" name="message" placeholder="Tell me about your project..."></textarea>
+                                        <span class="error-message" id="message-error"></span>
+                                    </div>
+                                    
+                                    <button type="submit" class="submit-btn">Send Message</button>
+                                </form>
+                                <div class="form-success" id="form-success">
+                                    <i class="fas fa-check-circle"></i>
+                                    <h3>Message Sent!</h3>
+                                    <p>Thanks for reaching out. I'll get back to you soon!</p>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-info">
+                                <div class="info-item">
+                                    <div class="info-icon">
+                                        <i class="fas fa-envelope"></i>
+                                    </div>
+                                    <div class="info-content">
+                                        <h3>Email</h3>
+                                        <p>badawizzy9@gmail.com</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="info-item">
+                                    <div class="info-icon">
+                                        <i class="fab fa-whatsapp"></i>
+                                    </div>
+                                    <div class="info-content">
+                                        <h3>WhatsApp</h3>
+                                        <p>+62 858 7087 2146</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="info-item">
+                                    <div class="info-icon">
+                                        <i class="fab fa-linkedin"></i>
+                                    </div>
+                                    <div class="info-content">
+                                        <h3>LinkedIn</h3>
+                                        <p>linkedin.com/in/wizzy</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="location-map">
+                                    <h3>Location</h3>
+                                    <div class="map-container">
+                                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3959.549160356801!2d110.43768847460737!3d-7.062138092940323!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e708fd7adb10023%3A0xe1dca7b34f5100f2!2sKos%20Pak%20Roes!5e0!3m2!1sid!2sid!4v1747391627947!5m2!1sid!2sid" 
+                                            width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                        <div class="map-placeholder">
+                                            <i class="fas fa-map-marker-alt"></i>
+                                            <p>Semarang, Indonesia</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="social-connect">
+                                    <h3>Follow Me</h3>
+                                    <div class="social-icons">
+                                        <a href="https://www.instagram.com/wwizzyyy/"><i class="fab fa-instagram"></i></a>
+                                        <a href="#"><i class="fab fa-twitter"></i></a>
+                                        <a href="#"><i class="fab fa-behance"></i></a>
+                                        <a href="#"><i class="fab fa-dribbble"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- ABOUT PAGE -->
+                    <div class="page-content" id="about">
+                        <div class="section-title">
+                            <h2>About Me</h2>
+                            <p>My journey, passion, and vision</p>
+                        </div>
+                        
+                        <div class="about-container">
+                            <div class="about-image">
+                                <img src="images/pasfoto.jpg" alt="About Me">
+                            </div>
+                            
+                            <div class="about-content">
+                                <h3>Hello! I'm Ahmad Badawi</h3>
+                                <p>Saya adalah mahasiswa Teknik Informatika yang suka menggabungkan teknologi dan seni visual untuk menciptakan pengalaman web yang menarik dan responsif. Perjalanan saya di dunia desain dan pengembangan web dimulai dari hobi menggambar dan membuat website sederhana sejak SMA.</p>
+                                
+                                <p>Dengan latar belakang dalam seni visual dan pemrograman, saya menawarkan perspektif unik dalam mengembangkan solusi digital yang tidak hanya fungsional tetapi juga menarik secara estetika.</p>
+                                
+                                <p>Visi karier saya adalah menjadi seorang profesional yang dapat menciptakan solusi digital yang tidak hanya menarik secara visual tetapi juga fungsional dan user-friendly. Saya percaya bahwa desain yang baik dapat memecahkan masalah dan memberikan pengalaman yang menyenangkan bagi pengguna.</p>
+                                
+                                <p>Di luar dunia digital, saya menikmati fotografi, mendaki gunung, dan mengeksplorasi kafe-kafe baru. Pengalaman-pengalaman ini sering menginspirasi karya-karya kreatif saya.</p>
+                                
+                                <div class="experience-highlights">
+                                    <div class="highlight-item">
+                                        <h4>3+ Years</h4>
+                                        <span>Design Experience</span>
+                                    </div>
+                                    <div class="highlight-item">
+                                        <h4>15+</h4>
+                                        <span>Projects Completed</span>
+                                    </div>
+                                    <div class="highlight-item">
+                                        <h4>8+</h4>
+                                        <span>Happy Clients</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="about-actions">
+                                    <a href="#contact" class="cta-button">Let's Work Together</a>
+                                    <a href="files/CV_Wizzy_Pratama.pdf" class="cta-button alternate" download>Download CV <i class="fas fa-download"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+            
+            <div class="pattern-top"></div>
+            <div class="pattern-bottom"></div>
+        </div>
+    </div>
+    
+    <script src="js/main.js"></script>
+    <script>
+    // Basic mobile navigation script
+    document.addEventListener('DOMContentLoaded', function() {
+        // Add mobile menu toggle button to the DOM
+        const header = document.querySelector('header');
+        const mobileMenuToggle = document.createElement('div');
+        mobileMenuToggle.className = 'mobile-menu-toggle';
+        mobileMenuToggle.innerHTML = '<span></span>';
+        header.appendChild(mobileMenuToggle);
+        
+        // Get sidebar and content elements
+        const sidebar = document.querySelector('.sidebar');
+        const content = document.querySelector('.content');
+        
+        // Toggle mobile menu
+        mobileMenuToggle.addEventListener('click', function() {
+            this.classList.toggle('active');
+            sidebar.classList.toggle('active');
+        });
+        
+        // Close menu when an item is clicked
+        document.querySelectorAll('.sidebar li a').forEach(item => {
+            item.addEventListener('click', function() {
+                if (window.innerWidth <= 480) {
+                    mobileMenuToggle.classList.remove('active');
+                    sidebar.classList.remove('active');
+                }
+            });
+        });
+    });
+  
+    document.getElementById('contact-form').addEventListener('submit', async function (e) {
+        e.preventDefault();
+        const form = e.target;
+        const data = new FormData(form);
+
+        const response = await fetch(form.action, {
+            method: form.method,
+            body: data,
+            headers: {
+                'Accept': 'application/json'
+            }
+        });
+
+        if (response.ok) {
+            document.getElementById('form-success').style.display = 'block';
+            form.reset();
+        } else {
+            alert("Something went wrong. Please try again.");
+        }
+    });
+    </script>
+</body>
+</html>
