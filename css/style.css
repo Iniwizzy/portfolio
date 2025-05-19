@@ -914,12 +914,6 @@ header {
     }
 }
 
-
-/* === MAP & LOCATION === */
-.location-map {
-    margin-top: 30px;
-}
-
 .map-container {
     background-color: #1f083f;
     border-radius: 10px;
@@ -946,14 +940,25 @@ header {
 }
 
 /* === RESPONSIVE === */
+/* Tambahan responsif untuk mobile */
 @media screen and (max-width: 768px) {
     .contact-container {
         flex-direction: column;
+        gap: 20px;
     }
 
     .contact-form,
     .contact-info {
-        flex: 1 1 100%;
+        width: 100%;
+    }
+
+    .contact-form textarea {
+        min-height: 100px;
+    }
+
+    /* === MAP & LOCATION === */
+    .location-map {
+        margin-top: 30px;
     }
 }
 
