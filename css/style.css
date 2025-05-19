@@ -928,6 +928,24 @@ header {
     margin-bottom: 5px;
 }
 
+.map-embed {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    height: 0;
+    overflow: hidden;
+    border-radius: 10px; /* optional */
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.map-embed iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
 /* === SOCIAL MEDIA === */
 .social-connect {
     margin-top: 30px;
@@ -956,10 +974,10 @@ header {
         min-height: 100px;
     }
 
-    /* === MAP & LOCATION === */
+    /* === MAP & LOCATION ===
     .location-map {
         margin-top: 30px;
-    }
+    } */
 }
 
 .website-url {
